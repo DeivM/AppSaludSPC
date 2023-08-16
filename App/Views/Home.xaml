@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.Home"
+                  xmlns:local="clr-namespace:App.Views"
+                  Title="" IconImageSource="home.png">
+    <StackLayout Margin="30">
+
+
+        <CollectionView ItemsSource="{Binding HomeViewModelG}"
+                IsGrouped="true"  SelectionMode="Multiple"
+                         SelectedItems="{Binding SelectedItem}" 
+                        >
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding ComDiaNr}"
+                   BackgroundColor="LightGray"
+                   FontSize="Large"
+                   FontAttributes="Bold" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+
+                        <Image Grid.RowSpan="2"
+                       Source=""
+                       Aspect="AspectFill"
+                       HeightRequest="60"
+                       WidthRequest="60" />
+                        <Label Grid.Column="1"
+                       Text="{Binding ComAlimentoNombre}"
+                       FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding ComAlimentoNombre}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+      
+    </StackLayout>
+
+</ContentPage>

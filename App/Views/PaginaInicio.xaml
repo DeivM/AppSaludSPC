@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.PaginaInicio"
+              xmlns:view="clr-namespace:App.Views;assembly=App"
+             >
+   
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+
+            <StackLayout Margin="20,80,0,0"
+               HorizontalOptions="Center">
+                <Image Source="logoinicio.png"
+                   HorizontalOptions="Center" />
+
+                <Label HorizontalOptions="CenterAndExpand" 
+               Text="Agenda una cita médica cuando quieras y desde donde te encuentres."
+               FontSize="Large"
+               VerticalOptions="Center"
+               HorizontalTextAlignment="Center"
+                />
+                </StackLayout>
+                
+
+            <StackLayout VerticalOptions="EndAndExpand"
+                HorizontalOptions="Center"
+                         Margin="0,0,0,15"
+                         >
+
+                <Button Text="LOGIN" class="botones" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Command="{Binding NavigateCommand}" CommandParameter="{x:Type view:Login}"/>
+
+                <Button Text="CREAR CUENTA" class="botones" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Command="{Binding NavigateCommand}" CommandParameter="{x:Type view:CrearCuenta}"/>
+
+                
+              
+                
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

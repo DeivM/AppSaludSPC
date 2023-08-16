@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.MasDatos"
+               xmlns:view="clr-namespace:App.Views;assembly=App"
+             >
+    <ScrollView>
+        <StackLayout Margin="30">
+            <Label   Text="¿Cuántos años tienes?" FontSize="Large"  class="tituloPrincipal"/>
+                <Entry Placeholder="TU EDAD"   Text="{Binding Edad}" Keyboard="Numeric" FontSize="14"/>
+            <Label   Text="¿Eres menor de 14 años? Lo sentimos, no puedes continuar." FontSize="Small"  />
+            <Button Text="Siguiente" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" class="botones" Command="{Binding NavigateCommand}" IsEnabled="{Binding Allowed}"  />
+        </StackLayout>
+           
+    </ScrollView>
+</ContentPage>

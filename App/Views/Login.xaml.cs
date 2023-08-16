@@ -1,0 +1,84 @@
+﻿
+using Acr.UserDialogs;
+using App.Helpers;
+using App.Models;
+using App.WebServices;
+using System;
+
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace App.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Login : ContentPage
+    {
+        private ResClient _resClient;
+        ILoginManager iml = null;
+
+        public Login(ILoginManager ilm)
+        {
+            InitializeComponent();
+            _resClient = new ResClient();
+            iml = ilm;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            txtEmail.Focus();
+        }
+        private async void btnLogin_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPass.Text))
+                {
+                    UserDialogs.Instance.ShowLoading(VariablesGlobales.ESPEREMOMENTO);
+                    TokenRequest token = new TokenRequest
+                    {
+                        UsuEmail = txtEmail.Text,
+                        UsuPassword = txtPass.Text
+                    };
+                    var dataToken = await _resClient.PostToken<RespuestaModel<Token1>, TokenRequest>(VariablesGlobales.URL + "Login/Login", token);
+                    if (dataToken.Codigo == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        await DisplayAlert(VariablesGlobales.ERROR, dataToken.Message[0], VariablesGlobales.OK);
+                    }
+                    else
+                    {
+
+                        Application.Current.Properties[VariablesGlobales.USUID] = dataToken.Data.UsuId;
+                        Application.Current.Properties[VariablesGlobales.USUARIO] = dataToken.Data.UsuNombre;
+                        Application.Current.Properties["token"] = dataToken.Data.Access_token;
+                        Application.Current.Properties["IsLoggedIn"] = true;
+                        Application.Current.Properties["password"] = txtPass.Text;
+                        Application.Current.Properties["email"] = txtEmail.Text;
+                        iml.ShowMainPage();
+                    }
+                    UserDialogs.Instance.HideLoading();
+                }
+                else
+                {
+                    await DisplayAlert(VariablesGlobales.INFO, VariablesGlobales.CORREOCONTRASEVACIO, VariablesGlobales.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+                await DisplayAlert(VariablesGlobales.ERROR, ex.Message, VariablesGlobales.OK);
+            }
+            
+
+        }
+
+        private async void btnRegistrar_Clicked(object sender, EventArgs e)
+        {
+          //  await Navigation.PushAsync(new NavigationPage(new Registrarse()));
+
+           // await    Navigation.PushAsync( new Registrarse());
+
+        }
+    }
+}

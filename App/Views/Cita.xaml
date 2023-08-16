@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.Cita"
+             >
+    <ScrollView>
+        <StackLayout >
+            <StackLayout Margin="30">
+               
+                    <Label Text="Generar Cita Médica" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,10,0,20"/>
+
+                <!-- <Label Text="Especialidad:" FontSize="Medium"/>
+                    <Picker Title="Seleccionar Especialidad" ItemsSource="{Binding Especialidade}" SelectedItem="{Binding SelectedEspecialidade}" />-->
+                
+                 <!--<Label Text="Médico:" FontSize="Medium"/>
+                    <Picker Title="Seleccionar Médico" ItemsSource="{Binding Medico}" SelectedItem="{Binding SelectedMedico}" /> -->
+                
+                    <Label Text="Fecha de Atención:" FontSize="Medium"/>
+                    <DatePicker Date="{Binding FechaAtencion}" />
+
+                    <Label Text="Hora de Inicio:" FontSize="Medium"/>
+                    <TimePicker Time="{Binding HoraInicio}" />
+
+                    <Label Text="Hora de Fin:" FontSize="Medium"/>
+                    <TimePicker Time="{Binding HoraFin}" />
+
+                    <Label Text="Estado:" FontSize="Medium"/>
+                    <Entry Text="{Binding EstadoPaciente}" Placeholder="Ingrese su estado" />
+
+                    <Label Text="Observación:" FontSize="Medium"/>
+                    <Entry Text="{Binding Observaciones}" Placeholder="Ingrese una observación" />
+
+                <Button Text="Agendar Cita" Command="{Binding AgendarCitaCommand}" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+
+                <!--<Button Text="ACEPTAR" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" class="botones" Command="{Binding ButtonCommand}" IsEnabled="{Binding Allowed}"/>-->
+            </StackLayout>
+            
+        </StackLayout>
+          
+    </ScrollView>
+</ContentPage>
