@@ -30,7 +30,8 @@
                                         <Label Text="Hora" FontSize="Small"  TextColor="#000000"/>
                                         <Label Text="{Binding CitInicioAtencion}" FontSize="Large"  TextColor="#000000" FontAttributes="Bold"/>
                                         <Label Text="Motivo Anular Cita" FontSize="Small"  TextColor="#000000"/>
-                                        <Button Text="Anular Cita" BackgroundColor="Red" Command="{Binding ButtonCommand}"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+                                        <Entry Text="{Binding CitObservaciones}" Placeholder="Motivo Anular Cita" />
+                                      
                                     </StackLayout>
 
                                 </Frame>
@@ -39,7 +40,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-           
+            <Button Text="Anular Cita" BackgroundColor="Red" Command="{Binding ButtonCommand}"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

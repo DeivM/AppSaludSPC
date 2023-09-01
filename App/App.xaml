@@ -24,8 +24,12 @@
             </Style>
 
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="#ff5733"/>
+                <Setter Property="BarBackgroundColor" Value="red"/>
                 <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="red"/>
+                <Setter Property="TextColor" Value="White"/>
             </Style>
 
         </ResourceDictionary>

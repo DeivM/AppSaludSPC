@@ -5,12 +5,15 @@
                   xmlns:local="clr-namespace:App.Views"
               xmlns:view="clr-namespace:App.Views;assembly=App"
                   Title="" IconImageSource="home.png"
+            
             >
     <ScrollView>
         <StackLayout Margin="5" Spacing="10">
             <Image Source="logoinicio.png"
                    Margin="0,20,0,0"
                    HorizontalOptions="Center" />
+            <Label x:Name="usuario"></Label>
+            
             <Grid Margin="5" ColumnSpacing="10"  RowSpacing="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150" />

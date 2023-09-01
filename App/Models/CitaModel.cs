@@ -22,6 +22,6 @@ namespace App.Models
         public string UsuNombres { get; set; }
         public string EspNombre { get; set; }
         public long PerId { get; set; }
-
+        public long? HorId { get; set; }
     }
 }

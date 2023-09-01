@@ -1,4 +1,5 @@
-﻿using App.Models;
+﻿using App.Helpers;
+using App.Models;
 using App.ViewModels;
 using System;
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace App.Views
             InitializeComponent();
             App.home = this;
             BindingContext = new HomeViewModel();
+            usuario.Text = (string)Application.Current.Properties[VariablesGlobales.USUARIO];
 
             // this.Master = new Master();
             // this.Detail = new NavigationPage(new MasterDetails());

@@ -20,10 +20,12 @@ namespace App.ViewModels
 
 
         private DateTime _fechaatencion = DateTime.Now;
-        private TimeSpan _horainicioatencion = TimeSpan.Zero;
+        private TimeSpan _horainicioatencion = DateTime.Now.TimeOfDay;  
         private TimeSpan _horafinatencion = TimeSpan.Zero;
         private string _estadopaciente = string.Empty;
         private string _observaciones = string.Empty;
+
+
         public ICommand ButtonCommand { get; }
         public INavigation Navigation { get; set; }
         private ObservableCollection<ListModel> _listEspecialidad;//= new ObservableCollection<ListModel>();
@@ -143,6 +145,7 @@ namespace App.ViewModels
                 {
                     _horainicioatencion = value;
                     OnPropertyChanged(nameof(HoraInicio));
+                    OnPropertyChanged(nameof(Allowed));
                 }
             }
         }
@@ -167,8 +170,27 @@ namespace App.ViewModels
                 validar = false;
                 Application.Current.MainPage.DisplayAlert(VariablesGlobales.INFO, "No puede Seleccionar una fecha menor a la fecha actuaL", VariablesGlobales.CERRAR);
             }
+
+            if (HoraInicio.TotalMinutes <= new TimeSpan(08, 00, 00).TotalMinutes || HoraInicio.TotalMinutes >= new TimeSpan(17, 00, 00).TotalMinutes)
+            {
+                validar = false;
+                Application.Current.MainPage.DisplayAlert(VariablesGlobales.INFO, "Debe ingresar un horario entre las  08:00 am hasta las 17:00 pm", VariablesGlobales.CERRAR);
+            }
+
             return validar;
         }
+
+        private bool ValidarHora()
+        {
+            bool validar = true;
+            if (HoraInicio >= new TimeSpan(08, 00, 00) && HoraInicio <= new TimeSpan(17, 00, 00))
+            {
+                validar = false;
+                Application.Current.MainPage.DisplayAlert(VariablesGlobales.INFO, "Debe ingresar un horario entre las horas de 08:00 hasta las 17:00", VariablesGlobales.CERRAR);
+            }
+            return validar;
+        }
+
 
         public bool Allowed => ValidarFecha();
 

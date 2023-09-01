@@ -24,9 +24,10 @@ namespace App.ViewModels
         public VerCitaViewModel(INavigation navigation)
         {
             Navigation = navigation;
+            ButtonCommand = new Command(async () => await AnularCita());
+
             _resClient = new ResClient();
             LoadData();
-            ButtonCommand = new Command(async () => await AnularCita());
         }
         public ObservableCollection<CitaModel> ListCita
         {
@@ -95,11 +96,12 @@ namespace App.ViewModels
                 foreach (var item in ListCita)
                 {
                     item.CitObservaciones = string.IsNullOrEmpty(item.CitObservaciones) ? string.Empty : item.CitObservaciones;
-                    item.CitEstado = 0;
+                    string a = string.IsNullOrEmpty(item.CitObservaciones) ? "1" : "0";
+                    item.CitEstado = Convert.ToInt16(a);
                     lista.Add(item);
                 }
 
-                var dataToken = await _resClient.Post<RespuestaModel<object>, List<CitaModel>>(VariablesGlobales.URL + "SeguimientoPaciente/PostList", lista);
+                var dataToken = await _resClient.Post<RespuestaModel<object>, List<CitaModel>>(VariablesGlobales.URL + "Cita/PostList", lista);
 
                 if (dataToken.Codigo != System.Net.HttpStatusCode.OK)
                 {
@@ -107,8 +109,8 @@ namespace App.ViewModels
                 }
 
                 UserDialogs.Instance.HideLoading();
-                await Application.Current.MainPage.DisplayAlert(VariablesGlobales.EXITO, "Encuenta llenada correctamente", VariablesGlobales.CERRAR);
-               
+                await Application.Current.MainPage.DisplayAlert(VariablesGlobales.EXITO, "Cita anulada correctamente", VariablesGlobales.CERRAR);
+              await  LoadData();
             }
             catch (Exception ex)
             {

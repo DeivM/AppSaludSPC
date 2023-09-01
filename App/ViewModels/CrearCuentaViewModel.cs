@@ -213,7 +213,7 @@ namespace App.ViewModels
 
 
                 UserDialogs.Instance.HideLoading();
-                await Navigation.PushAsync(new Master());
+                App.Current.ShowMainPage();
             }
             catch (Exception ex)
             {
