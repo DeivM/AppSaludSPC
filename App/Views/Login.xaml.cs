@@ -90,9 +90,11 @@ namespace App.Views
 
         }
 
-        private async void btnRecuperarContrasena_Clicked(object sender, EventArgs e)
+        private async void LblForgetPassword_Tapped(object sender, EventArgs e)
         {
+            // App.Current.Rcuperar();
             await Navigation.PushModalAsync(new RecuperarContrasena());
+          //  await Navigation.PushAsync(new RecuperarContrasena());
         }
     }
 }

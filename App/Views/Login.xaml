@@ -47,14 +47,20 @@
                             Text="INICIAR SESION" x:Name="btnLogin" Clicked="btnLogin_Clicked"/>
                     <Button   BackgroundColor="Red" HorizontalOptions="FillAndExpand"
                             Text="REGISTRARME" x:Name="btnRegistrar" Clicked="btnRegistrar_Clicked"/>
-                    <Button Text="Recuperar Contraseña" BackgroundColor="Transparent" BorderColor="Transparent" TextColor="Red" x:Name="btnRecuperarContrasena" Clicked="btnRecuperarContrasena_Clicked"/>
-                    
-
+                 
 
                     <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Center"
-                             Margin="0,40,0,0">
-
+                         HorizontalOptions="Center"
+                         Margin="0,40,0,0">
+                        <Label Text="Recuperar Contraseña"
+                       TextColor="Black" />
+                        <Label Text="Aquí"
+                       TextDecorations="Underline"
+                       TextColor="#FDC005">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="LblForgetPassword" Tapped="LblForgetPassword_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
 

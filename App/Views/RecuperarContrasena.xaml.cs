@@ -17,7 +17,7 @@ namespace App.Views
     {
         public RecuperarContrasena()
         {
-            
+            InitializeComponent();
             BindingContext = new RecuperarContrasenaViewModel(Navigation);
         }
 

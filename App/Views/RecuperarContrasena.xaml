@@ -4,12 +4,6 @@
              x:Class="App.Views.RecuperarContrasena"
               xmlns:view="clr-namespace:App.Views;assembly=App"
              Title="">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem 
-                 IconImageSource="https://cdn-icons-png.flaticon.com/512/66/66029.png"
-                 Order="Primary"
-                 Priority="0" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -20,38 +14,11 @@
                     <Image  Source="logoinicio.png" WidthRequest="150" HeightRequest="100" Margin="0,40,0,0"
                        HorizontalOptions="Center"  />
 
-                    <Entry Placeholder="Email"   x:Name="txtEmail" Keyboard="Email" FontSize="14"/>
+                    <Entry Placeholder="Correo Electrónico"   Text="{Binding Email}" Keyboard="Email" FontSize="14"/>
+
+                    <Button Text="RECUPERAR CONTRASEÑA"  Command="{Binding ButtonCommand}" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" IsEnabled="{Binding Allowed}"/>
 
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                      
-                            
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        
-                        <BoxView Grid.Row="0" />
-                       
-                        <BoxView Grid.Row="0" Grid.Column="1"/>
-                     
-                        
-                    </Grid>
-
-
-                    <Button   BackgroundColor="Red"  HorizontalOptions="FillAndExpand"
-                            Text="RECUPERAR CONTRASEÑA" x:Name="btnRecuperarContrasena" Clicked="btnRecuperarContrasena_Clicked"/>
-                    
-
-
-                    <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Center"
-                             Margin="0,40,0,0">
-
-                    </StackLayout>
 
 
                 </StackLayout>

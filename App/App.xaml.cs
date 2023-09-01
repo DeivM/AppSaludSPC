@@ -75,5 +75,12 @@ namespace App
             MainPage = new CrearCuenta();
         }
 
+        public void Rcuperar()
+        {
+
+            MainPage = new RecuperarContrasena();
+        }
+
+
     }
 }
