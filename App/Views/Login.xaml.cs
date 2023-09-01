@@ -2,6 +2,7 @@
 using Acr.UserDialogs;
 using App.Helpers;
 using App.Models;
+using App.ViewModels;
 using App.WebServices;
 using System;
 
@@ -17,11 +18,19 @@ namespace App.Views
         private ResClient _resClient;
         ILoginManager iml = null;
 
+        public Login()
+        {
+            InitializeComponent();
+            _resClient = new ResClient();
+            BindingContext = new MainPageViewModel(Navigation);
+        }
+
         public Login(ILoginManager ilm)
         {
             InitializeComponent();
             _resClient = new ResClient();
             iml = ilm;
+            BindingContext = new MainPageViewModel(Navigation);
         }
         protected override void OnAppearing()
         {
@@ -67,7 +76,7 @@ namespace App.Views
             catch (Exception ex)
             {
                 UserDialogs.Instance.HideLoading();
-                await DisplayAlert(VariablesGlobales.ERROR, ex.Message, VariablesGlobales.OK);
+                await DisplayAlert(VariablesGlobales.ERROR, ex.Message.ToString(), VariablesGlobales.OK);
             }
             
 
@@ -75,9 +84,9 @@ namespace App.Views
 
         private async void btnRegistrar_Clicked(object sender, EventArgs e)
         {
-          //  await Navigation.PushAsync(new NavigationPage(new Registrarse()));
+          await  Navigation.PushModalAsync(new CrearCuenta());
 
-           // await    Navigation.PushAsync( new Registrarse());
+          //  await Navigation.PushAsync(new NavigationPage(new CrearCuenta()));
 
         }
     }

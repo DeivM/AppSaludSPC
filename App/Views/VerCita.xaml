@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.VerCita"
+             Title="Ver Citas"
+             >
+    <ScrollView>
+        <StackLayout>
+            <ListView x:Name="ItemsListView" 
+            ItemsSource="{Binding ListCita}"
+            VerticalOptions="FillAndExpand"
+             HasUnevenRows="true"
+             
+          
+             CachingStrategy="RecycleElement"
+            >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Frame HasShadow="True" >
+                                    <StackLayout>
+                                        <Label Text="Doctor" FontSize="Small"  TextColor="#000000" />
+                                        <Label Text="{Binding MedNombres}" FontSize="Large"  TextColor="#000000" FontAttributes="Bold"/>
+                                       
+                                        <Label Text="Especialidad" FontSize="Small"  TextColor="#000000"/>
+                                        <Label Text="{Binding EspNombre}" FontSize="Large"  TextColor="#000000" FontAttributes="Bold"/>
+                                        <Label Text="Fecha" FontSize="Small"  TextColor="#000000"/>
+                                        <Label Text="{Binding CitFechaAtencion, StringFormat='{0:MMMM dd, yyyy}'}" FontSize="Large"  TextColor="#000000" FontAttributes="Bold"/>
+                                        <Label Text="Hora" FontSize="Small"  TextColor="#000000"/>
+                                        <Label Text="{Binding CitInicioAtencion}" FontSize="Large"  TextColor="#000000" FontAttributes="Bold"/>
+                                        <Label Text="Motivo Anular Cita" FontSize="Small"  TextColor="#000000"/>
+                                        <Button Text="Anular Cita" BackgroundColor="Red" Command="{Binding ButtonCommand}"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+                                    </StackLayout>
+
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+           
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

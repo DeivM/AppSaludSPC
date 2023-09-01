@@ -14,10 +14,10 @@ namespace App.ViewModels
 
         protected void RaisePropertyChanged([CallerMemberName] string name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
@@ -37,5 +37,17 @@ namespace App.ViewModels
             set => SetProperty(ref isBusy, value);
         }
 
-    }
+        protected void SetObservableProperty<T>(ref T field, T value,
+[CallerMemberName] string propertyName = "")
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) return;
+            field = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    
+
+}
 }

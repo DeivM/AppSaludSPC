@@ -5,7 +5,7 @@
         public const string USUARIO = "usuario";
         public const string USUID = "UsuId";
        //public const string URL = "https://192.168.0.6:45455/api/";
-        public const string URL = "https://saludspc.azurewebsites.net/api/";
+        public const string URL = "https://spcsalud.azurewebsites.net/api/";
         public const string URLIMAGE = "home/Imagenes/";
         public const string ERROR = "Error";
         public const string OK = "Ok";

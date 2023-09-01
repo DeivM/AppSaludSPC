@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Views.Cita"
+             Title="Agendar Citas"
              >
     <ScrollView>
         <StackLayout >
@@ -9,11 +10,14 @@
                
                     <Label Text="Generar Cita Médica" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,10,0,20"/>
 
-                <!-- <Label Text="Especialidad:" FontSize="Medium"/>
-                    <Picker Title="Seleccionar Especialidad" ItemsSource="{Binding Especialidade}" SelectedItem="{Binding SelectedEspecialidade}" />-->
+                 <Label Text="Especialidad:" FontSize="Medium"/>
+                <Picker Title="--Seleccionar--" ItemsSource="{Binding ListEspecialidad}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding SelectedEspecialidad, Mode=TwoWay}" />
+
+
                 
-                 <!--<Label Text="Médico:" FontSize="Medium"/>
-                    <Picker Title="Seleccionar Médico" ItemsSource="{Binding Medico}" SelectedItem="{Binding SelectedMedico}" /> -->
+                 <Label Text="Médico:" FontSize="Medium"/>
+                <Picker Title="--Seleccionar--" ItemsSource="{Binding ListMedico}" ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding SelectedMedico}" />
+
                 
                     <Label Text="Fecha de Atención:" FontSize="Medium"/>
                     <DatePicker Date="{Binding FechaAtencion}" />
@@ -24,13 +28,10 @@
                     <Label Text="Hora de Fin:" FontSize="Medium"/>
                     <TimePicker Time="{Binding HoraFin}" />
 
-                    <Label Text="Estado:" FontSize="Medium"/>
+                    <Label Text="Diognóstico:" FontSize="Medium"/>
                     <Entry Text="{Binding EstadoPaciente}" Placeholder="Ingrese su estado" />
-
-                    <Label Text="Observación:" FontSize="Medium"/>
-                    <Entry Text="{Binding Observaciones}" Placeholder="Ingrese una observación" />
-
-                <Button Text="Agendar Cita" Command="{Binding AgendarCitaCommand}" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+                <!-- <Label Text="Observación:" FontSize="Medium"/> <Entry Text="{Binding Observaciones}" Placeholder="Ingrese una observación" />-->
+                <Button Text="Agendar Cita" BackgroundColor="Red" Command="{Binding ButtonCommand}" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" IsEnabled="{Binding Allowed}"/>
 
                 <!--<Button Text="ACEPTAR" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" class="botones" Command="{Binding ButtonCommand}" IsEnabled="{Binding Allowed}"/>-->
             </StackLayout>

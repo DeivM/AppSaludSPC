@@ -22,6 +22,12 @@
             <Style Class="tituloPrincipalCollectionView" TargetType="Label">
                 <Setter Property="TextColor" Value="#000000"/>
             </Style>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#ff5733"/>
+                <Setter Property="BarTextColor" Value="White"/>
+            </Style>
+
         </ResourceDictionary>
         
         

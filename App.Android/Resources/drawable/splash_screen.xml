@@ -3,8 +3,11 @@
   <item>
     <color android:color="@color/splash-background"/>
   </item>
-<item>
+<item  android:height="500dp"
+android:width="500dp"
+	   android:gravity="center">
   <bitmap android:src="@drawable/logoinicio"
+		 
     android:tileMode="disabled"
 android:gravity="center"/>
           

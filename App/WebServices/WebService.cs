@@ -165,10 +165,10 @@ namespace App.WebServices
                 var contentjson = Newtonsoft.Json.JsonConvert.SerializeObject(objectttosend);
                 var buffer = Encoding.UTF8.GetBytes(contentjson);
                 var rawcontent = new ByteArrayContent(buffer);
-               // var token = tokenData.GetAccesToken();
+                var token = Token.GetAccesToken();
                 // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Settings.AccessToken);
                 rawcontent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var response = await client.PostAsync(url, rawcontent);
                 if (response != null && response.IsSuccessStatusCode)
                 {

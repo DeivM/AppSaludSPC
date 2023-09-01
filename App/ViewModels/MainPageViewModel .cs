@@ -20,8 +20,17 @@ namespace App.ViewModels
 
         private async void OnNavigateCommand(Type pageType)
         {
-            Page page = (Page)Activator.CreateInstance(pageType);
-            await Navigation.PushAsync(page);
+            if (pageType.FullName== "App.Views.Login")
+            {
+                App.Current.Logout();
+            }
+            else
+            {
+
+                Page page = (Page)Activator.CreateInstance(pageType);
+                await Navigation.PushAsync(page);
+            }
+
         }
     }
 }

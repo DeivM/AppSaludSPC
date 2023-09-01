@@ -3,44 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Views.Home"
                   xmlns:local="clr-namespace:App.Views"
-                  Title="" IconImageSource="home.png">
-    <StackLayout Margin="30">
+              xmlns:view="clr-namespace:App.Views;assembly=App"
+                  Title="" IconImageSource="home.png"
+            >
+    <ScrollView>
+        <StackLayout Margin="5" Spacing="10">
+            <Image Source="logoinicio.png"
+                   Margin="0,20,0,0"
+                   HorizontalOptions="Center" />
+            <Grid Margin="5" ColumnSpacing="10"  RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="150" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Frame  StyleClass="Option">
+                    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="Center">
+                        <Label StyleClass="Title" Text="Agendar Cita" FontAttributes="Bold" TextColor="#000000"/>
+                        <Image Source="reserva.png"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="AgendarCita" Tapped="AgendarCita_Tapped"  />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Column="1" StyleClass="Option">
+                    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="Center">
+                        <Label StyleClass="Title" Text="Ver mis citas" FontAttributes="Bold" TextColor="#000000"/>
+                        <Image Source="vercitas.jpeg"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="verMisCitas"  Tapped="verMisCitas_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1"  Grid.Column="0" StyleClass="Option">
+                    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="Center">
+                        <Label StyleClass="Title" Text="Llenar encuesta" FontAttributes="Bold" TextColor="#000000"/>
+                        <Image Source="encuesta.jpeg"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="llenarEncuesta"  Tapped="llenarEncuesta_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="1"  Grid.Column="1" StyleClass="Option">
+                    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="Center">
+                        <Label StyleClass="Title" Text="Cerrar Sesión" FontAttributes="Bold" TextColor="#000000"/>
+                        <Image Source="cerrar.jpeg"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="cerrarSesin"  Tapped="cerrarSesin_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Frame>
 
 
-        <CollectionView ItemsSource="{Binding HomeViewModelG}"
-                IsGrouped="true"  SelectionMode="Multiple"
-                         SelectedItems="{Binding SelectedItem}" 
-                        >
-            <CollectionView.GroupHeaderTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding ComDiaNr}"
-                   BackgroundColor="LightGray"
-                   FontSize="Large"
-                   FontAttributes="Bold" />
-                </DataTemplate>
-            </CollectionView.GroupHeaderTemplate>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
-
-                        <Image Grid.RowSpan="2"
-                       Source=""
-                       Aspect="AspectFill"
-                       HeightRequest="60"
-                       WidthRequest="60" />
-                        <Label Grid.Column="1"
-                       Text="{Binding ComAlimentoNombre}"
-                       FontAttributes="Bold" />
-                        <Label Grid.Row="1"
-                       Grid.Column="1"
-                       Text="{Binding ComAlimentoNombre}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-      
-    </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>

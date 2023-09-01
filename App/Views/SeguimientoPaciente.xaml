@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.SeguimientoPaciente"
+             Title="Segumiento paciente"
+             >
+    <ScrollView>
+        <StackLayout>
+            <ListView x:Name="ItemsListView" 
+            ItemsSource="{Binding ListSeguimientoPaciente}"
+            VerticalOptions="FillAndExpand"
+             HasUnevenRows="true"
+             
+          
+             CachingStrategy="RecycleElement"
+            >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Frame HasShadow="True" >
+                                    
+                                    
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding CasNombre}"  FontSize="16" LineBreakMode="WordWrap"/>
+                                            <CheckBox IsChecked="{Binding SepFinalizar, Mode=TwoWay}" BindingContext="{Binding .}">
+                                            </CheckBox>
+                                       
+                                        </StackLayout>
+                                        <Label Text="Ingrese una Observación" FontSize="Small"  TextColor="#000000"/>
+                                        <Entry Placeholder="Ingrese una Observación"   Text="{Binding SepObservacion}" Keyboard="Text" FontSize="14"/>
+                                    </StackLayout>
+
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Guardar" BackgroundColor="Red" Command="{Binding ButtonCommand}" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -27,7 +27,7 @@ namespace App.ViewModels
         public UsuarioModel DatosUsuario
         {
             get { return _datosUsuario; }
-            set { _datosUsuario = value; OnPropertyChanged(); }
+          //  set { _datosUsuario = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<HomeViewModelGroup> HomeViewModelG
@@ -50,8 +50,8 @@ namespace App.ViewModels
         {
             _resClient = new ResClient();
             //Navigation = navigation;
-           // NavigateCommand = new Command<Type>(async (pageType) => await GoToDetails(pageType));
-            ObtenerDatos();
+           NavigateCommand = new Command<Type>(async (pageType) => await GoToDetails(pageType));
+          //  ObtenerDatos();
         }
 
         private async void ObtenerDatos()
@@ -84,13 +84,13 @@ namespace App.ViewModels
 
             //if (SelectedItem != null)
             //{
-                var page = (Page)Activator.CreateInstance(pageType);
-                //DatosUsuario.MejId = SelectedItem.id;
-              /*  page.BindingContext = new InformacionBasicaViewModel(Navigation)
-                {
-                    DatosUsuario = DatosUsuario
-                };*/
-                await Navigation.PushAsync(page);
+            Page page = (Page)Activator.CreateInstance(pageType);
+            //DatosUsuario.MejId = SelectedItem.id;
+            /*  page.BindingContext = new InformacionBasicaViewModel(Navigation)
+              {
+                  DatosUsuario = DatosUsuario
+              };*/
+            await Navigation.PushAsync(page);
             //}
         }
     }

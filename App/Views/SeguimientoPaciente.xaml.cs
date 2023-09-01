@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace App.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PaginaInicio : ContentPage
+    public partial class SeguimientoPaciente : ContentPage
     {
-        public PaginaInicio()
+        public SeguimientoPaciente()
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel(Navigation);
+            BindingContext = new SeguimientoPacienteViewModel(Navigation);
         }
     }
 }

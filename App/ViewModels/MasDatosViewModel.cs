@@ -21,7 +21,7 @@ namespace App.ViewModels
         public UsuarioModel DatosUsuario
         {
             get { return _datosUsuario; }
-            set { _datosUsuario = value; OnPropertyChanged(); }
+          //  set { _datosUsuario = value; OnPropertyChanged(); }
         }
 
         public string MasDatos

@@ -19,22 +19,22 @@ namespace App
             var isLoggedIn = Properties.ContainsKey("IsLoggedIn") ? (bool)Properties["IsLoggedIn"] : false;
             if (isLoggedIn)
             {
-                MainPage = new NavigationPage(new PaginaInicio())
-                {
-                    BarBackgroundColor = Color.Red // Establece el color de la barra de navegación aquí
-                };
-               // MainPage = new PaginaInicio();
+                //MainPage = new Home();
+                MainPage = new NavigationPage(new Home());
+                //{
+                //    BarBackgroundColor = Color.Red // Establece el color de la barra de navegación aquí
+                //};
             }
             else
             {
-                MainPage = new NavigationPage(new PaginaInicio())
-                {
-                    BarBackgroundColor = Color.Red // Establece el color de la barra de navegación aquí
-                };
+                MainPage = new NavigationPage(new PaginaInicio());
+                //{
+                //    BarBackgroundColor = Color.Red // Establece el color de la barra de navegación aquí
+                //};
 
 
                 // MainPage = new PaginaInicio();
-                //MainPage = MainPage = new NavigationPage(new Login(this));
+                //  MainPage = new NavigationPage(new Login(this));
                 // MainPage = new Ubicacion();
 
             }
@@ -66,7 +66,13 @@ namespace App
 
         public void ShowMainPage()
         {
-            MainPage = new Home();
+            MainPage = new NavigationPage( new Home());
+        }
+
+        public void CreaCuenta()
+        {
+
+            MainPage = new CrearCuenta();
         }
 
     }

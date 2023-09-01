@@ -14,24 +14,19 @@ namespace App.ViewModels
     public class CrearCuentaViewModel : BaseViewModel
     {
         private ResClient _resClient;
-        private UsuarioModel _datosUsuario;
+        private UsuarioModel DatosUsuario= new UsuarioModel();
         private string _nombres = string.Empty;
         private string _apellidos = string.Empty;
         private string _cedula = string.Empty;
         private string _direccion = string.Empty;
         private string _telefono = string.Empty;
         private string _sexo = string.Empty;
-        private DateTime _fechanacimiento = DateTime.MinValue;
+        private DateTime _fechanacimiento = DateTime.Now;
         private string _email = string.Empty;
         private string _contrasena = string.Empty;
         public ICommand ButtonCommand { get; }
         public INavigation Navigation { get; set; }
-        ILoginManager iml = null;
-        public UsuarioModel DatosUsuario
-        {
-            get { return _datosUsuario; }
-            set { _datosUsuario = value; OnPropertyChanged(); }
-        }
+
         public string Email
         {
             get { return _email; }
@@ -181,12 +176,13 @@ namespace App.ViewModels
                 DatosUsuario.UsuCedula = Cedula;
                 DatosUsuario.UsuDireccion = Direccion;
                 DatosUsuario.UsuTelefono = Telefono;
-                DatosUsuario.UsuSexo = Sexo;
+                DatosUsuario.UsuSexo = Sexo=="Masculino"?"M":"F";
                 DatosUsuario.UsuFechaNacimiento = FechaNacimiento;
+
 
                 UserDialogs.Instance.ShowLoading(VariablesGlobales.ESPEREMOMENTO);
 
-                var dataToken = await _resClient.Post<RespuestaModel<object>, UsuarioModel>(VariablesGlobales.URL + VariablesGlobales.APIUSUARIO+ "/UsuarioPlan", DatosUsuario);
+                var dataToken = await _resClient.PostToken<RespuestaModel<object>, UsuarioModel>(VariablesGlobales.URL + VariablesGlobales.APIUSUARIO, DatosUsuario);
 
                 if (dataToken.Codigo != System.Net.HttpStatusCode.OK)
                 {
@@ -198,7 +194,7 @@ namespace App.ViewModels
                     UsuEmail = DatosUsuario.UsuEmail,
                     UsuPassword = DatosUsuario.UsuPassword
                 };
-                var dataToken1 = await _resClient.PostToken<RespuestaModel<Token1>, UsuarioModel>(VariablesGlobales.URL + "Usuario/Login", token);
+                var dataToken1 = await _resClient.PostToken<RespuestaModel<Token1>, UsuarioModel>(VariablesGlobales.URL + "Login/Login", token);
                 if (dataToken.Codigo == System.Net.HttpStatusCode.Unauthorized)
                 {
                     await Application.Current.MainPage.DisplayAlert(VariablesGlobales.ERROR, dataToken.Message[0], VariablesGlobales.OK);
@@ -221,10 +217,8 @@ namespace App.ViewModels
             }
             catch (Exception ex)
             {
-                var error = Newtonsoft.Json.JsonConvert.DeserializeObject<CodeErrorResponse>(ex.Message);
-
                 UserDialogs.Instance.HideLoading();
-                await Application.Current.MainPage.DisplayAlert(VariablesGlobales.INFO, error.Message, VariablesGlobales.CERRAR);
+                await Application.Current.MainPage.DisplayAlert(VariablesGlobales.INFO, ex.Message, VariablesGlobales.CERRAR);
 
             }
         }
