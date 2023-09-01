@@ -27,7 +27,7 @@
 
                     
 
-                    <Label Text="Diognóstico:" FontSize="Medium"/>
+                    <Label Text="Diagnóstico:" FontSize="Medium"/>
                 <Entry Text="{Binding EstadoPaciente}" Placeholder="Síntomas" />
                 <!-- <Label Text="Observación:" FontSize="Medium"/> <Entry Text="{Binding Observaciones}" Placeholder="Ingrese una observación" />-->
                 <Button Text="Agendar Cita" BackgroundColor="Red" Command="{Binding ButtonCommand}" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" IsEnabled="{Binding Allowed}"/>

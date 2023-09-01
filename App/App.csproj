@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\RecuperarContrasena.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>RecuperarContrasena.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\VerCita.xaml.cs">
       <DependentUpon>VerCita.xaml</DependentUpon>
     </Compile>
@@ -42,6 +46,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\RecuperarContrasena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\PaginaInicio.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

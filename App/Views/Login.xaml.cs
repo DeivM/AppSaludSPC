@@ -89,5 +89,10 @@ namespace App.Views
           //  await Navigation.PushAsync(new NavigationPage(new CrearCuenta()));
 
         }
+
+        private async void btnRecuperarContrasena_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new RecuperarContrasena());
+        }
     }
 }
